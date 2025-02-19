@@ -1,0 +1,17 @@
+[project]
+name = "uv-testing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.9.6",
+]
+
+[tool.ruff]
+line-length = 100  
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["ALL"]  # Включить ошибки стиля, синтаксиса, сортировку импортов
+ignore = ["E501", "D", "UP035", "ANN401"]  
