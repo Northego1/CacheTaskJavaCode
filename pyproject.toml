@@ -13,5 +13,5 @@ line-length = 100
 target-version = "py311"
 
 [tool.ruff.lint]
-select = ["ALL"]  # Включить ошибки стиля, синтаксиса, сортировку импортов
-ignore = ["E501", "D", "UP035", "ANN401"]  
+select = ["ALL"]  
+ignore = ["E501", "D", "UP035", "ANN401", "B010", "B009"]  

@@ -13,6 +13,7 @@ def lru_cache(maxsize: Callable[..., Any] | None = None) -> Callable[..., Any]: 
 def lru_cache(maxsize: int | None | Callable[..., Any] = None) -> Callable[..., Any]:
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         cache = {}
+
         def key_creator(args: tuple[Any, ...], kwargs: dict[str, Any]) -> bytes:
             return pickle.dumps(args) + pickle.dumps(kwargs)
 
@@ -27,6 +28,7 @@ def lru_cache(maxsize: int | None | Callable[..., Any] = None) -> Callable[..., 
             cache[key] = result
             return result
         return wrapper
+
     if callable(maxsize):
         foo = maxsize
         maxsize = None
