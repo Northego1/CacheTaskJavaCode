@@ -1,0 +1,26 @@
+{
+    "test_info": {
+        "n": 100000,
+        "thread_pool_size": 8,
+        "process_pool_size": "equal cpu cores",
+        "processes_quantity": "equal cpu cores"
+    },
+    "test_results": {
+        "SingleProcessResult": {
+            "exec_time": 4.48615,
+            "%": 0
+        },
+        "ThreadPoolResult": {
+            "exec_time": 5.75964,
+            "%": 77.9
+        },
+        "ProcessPoolResult": {
+            "exec_time": 0.92216,
+            "%": 486.5
+        },
+        "ProcessResult": {
+            "exec_time": 0.90218,
+            "%": 497.3
+        }
+    }
+}
