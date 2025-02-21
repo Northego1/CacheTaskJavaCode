@@ -41,7 +41,6 @@ async def file_writer(file_path: str) -> AsyncGenerator[None, dict[str, int]]:
             await file.close()
 
 
-
 async def fetch_urls(
         file: AsyncTextIOWrapper,
         file_path: str = "./result.jsonl",
@@ -57,7 +56,6 @@ async def fetch_urls(
 
         await asyncio.gather(*tasks)
         await write_gen.aclose()
-
 
 
 async def main() -> None:
