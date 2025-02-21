@@ -1,0 +1,109 @@
+{
+    "https://jsonplaceholder.typicode.com/todos/3": {
+        "userId": 1,
+        "id": 3,
+        "title": "fugiat veniam minus",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/5": {
+        "userId": 1,
+        "id": 5,
+        "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/1": {
+        "userId": 1,
+        "id": 1,
+        "title": "delectus aut autem",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/4": {
+        "userId": 1,
+        "id": 4,
+        "title": "et porro tempora",
+        "completed": true
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/2": {
+        "userId": 1,
+        "id": 2,
+        "title": "quis ut nam facilis et officia qui",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/6": {
+        "userId": 1,
+        "id": 6,
+        "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/7": {
+        "userId": 1,
+        "id": 7,
+        "title": "illo expedita consequatur quia in",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/9": {
+        "userId": 1,
+        "id": 9,
+        "title": "molestiae perspiciatis ipsa",
+        "completed": false
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/10": {
+        "userId": 1,
+        "id": 10,
+        "title": "illo est ratione doloremque quia maiores aut",
+        "completed": true
+    }
+}
+{
+    "https://jsonplaceholder.typicode.com/todos/8": {
+        "userId": 1,
+        "id": 8,
+        "title": "quo adipisci enim quam ut ab",
+        "completed": true
+    }
+}
+{
+    "https://httpbin.org/status/403": 403
+}
+{
+    "https://httpbin.org/status/500": 500
+}
+{
+    "https://httpbin.org/status/200": 0
+}
+{
+    "https://httpbin.org/status/404": 404
+}
+{
+    "https://httpbin.org/delay/2": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate",
+            "Host": "httpbin.org",
+            "User-Agent": "Python/3.12 aiohttp/3.11.12",
+            "X-Amzn-Trace-Id": "Root=1-67b86019-01e7f6a86cc6862e61171ca2"
+        },
+        "origin": "212.102.54.50",
+        "url": "https://httpbin.org/delay/2"
+    }
+}
