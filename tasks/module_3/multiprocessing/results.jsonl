@@ -7,20 +7,20 @@
     },
     "test_results": {
         "SingleProcessResult": {
-            "exec_time": 4.45927,
+            "exec_time": 4.61189,
             "%": 0
         },
         "ThreadPoolResult": {
-            "exec_time": 5.81281,
-            "%": 76.7
+            "exec_time": 5.37065,
+            "%": 85.9
         },
         "ProcessPoolResult": {
-            "exec_time": 0.84938,
-            "%": 525.0
+            "exec_time": 0.84418,
+            "%": 546.3
         },
         "ProcessResult": {
-            "exec_time": 0.76647,
-            "%": 581.8
+            "exec_time": 0.86245,
+            "%": 534.7
         }
     }
 }

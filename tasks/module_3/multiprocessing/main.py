@@ -27,7 +27,7 @@ class ConcurentBase:
 async def main(
         n: int,
         thread_pool_size: int = 8,
-        saving_path: str = './results.json',
+        saving_path: str = './results.jsonl',
 ) -> None:
     cb = ConcurentBase()
 
