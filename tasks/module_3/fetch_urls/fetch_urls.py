@@ -26,14 +26,13 @@ async def send_request(session: ClientSession, url: str) -> tuple:
 
 async def fetch_urls(urls: list[str], file_path: str) -> None:
     sema = asyncio.Semaphore(5)
-    path = Path(file_path)
     async with ClientSession() as session:
         async with sema:
             tasks = [asyncio.create_task(send_request(session, url)) for url in urls]
             responses = await asyncio.gather(*tasks)
             fetched_dict = {resp[0]: resp[1] for resp in responses}
 
-    async with aiofiles.open(path, "w", encoding="utf-8") as file:
+    async with aiofiles.open(file_path, "w", encoding="utf-8") as file:
         await file.write(json.dumps(fetched_dict, indent=4))
 
 
