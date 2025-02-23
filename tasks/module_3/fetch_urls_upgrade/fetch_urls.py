@@ -59,6 +59,7 @@ async def fetch_urls(
             while len(active_tasks) >= tasks_limit:
                 done, _ = await asyncio.wait(active_tasks, return_when=asyncio.FIRST_COMPLETED)
                 active_tasks -= set(done)
+
         await asyncio.gather(*active_tasks)
         await queue.put(None)
         await writer_task

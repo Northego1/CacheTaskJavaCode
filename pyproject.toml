@@ -8,6 +8,7 @@ dependencies = [
     "aiofiles>=24.1.0",
     "aiohttp>=3.11.12",
     "ruff>=0.9.6",
+    "uvicorn>=0.34.0",
 ]
 
 [tool.ruff]
