@@ -8,12 +8,12 @@ from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientError
 from aiohttp.web_exceptions import HTTPException
 
-sema = asyncio.Semaphore(5)
 
 async def request_manager(
         session: ClientSession,
         url: str,
-        file_write_gen: AsyncGenerator[None, dict[str, int]],
+        sema: asyncio.Semaphore,
+        queue: asyncio.Queue,
     ) -> None:
     try:
         async with sema:
@@ -27,35 +27,41 @@ async def request_manager(
     except HTTPException:
         write_line = {url: 0}
 
-    await file_write_gen.asend(write_line)
+    await queue.put(write_line)
 
 
-async def file_writer(file_path: str) -> AsyncGenerator[None, dict[str, int]]:
+async def file_writer(queue: asyncio.Queue, file_path: str) -> None:
     async with aiofiles.open(file_path, "w", encoding="utf-8") as file:
-        try:
-            while True:
-                line = yield None
-                await file.write(json.dumps(line, indent=4) + "\n")
-        finally:
-            await file.flush()
-            await file.close()
+        while True:
+            line = await queue.get()
+            if line is None:
+                break
+            await file.write(json.dumps(line, indent=4) + "\n")
+            queue.task_done()
 
 
 async def fetch_urls(
         file: AsyncTextIOWrapper,
         file_path: str = "./result.jsonl",
+        tasks_limit: int = 5,
 ) -> None:
-    tasks = []
+    queue = asyncio.Queue()
+    sema = asyncio.Semaphore(tasks_limit)
+    active_tasks = set()
     async with ClientSession() as session:
-        write_gen = file_writer(file_path)
-        await anext(write_gen)
+        writer_task = asyncio.create_task(file_writer(queue, file_path))
 
         async for line in file:
             url = line.strip()
-            tasks.append(asyncio.create_task(request_manager(session, url, write_gen)))
-
-        await asyncio.gather(*tasks)
-        await write_gen.aclose()
+            active_tasks.add(
+                asyncio.create_task(request_manager(session, url, sema, queue))
+            )
+            while len(active_tasks) >= tasks_limit:
+                done, _ = await asyncio.wait(active_tasks, return_when=asyncio.FIRST_COMPLETED)
+                active_tasks -= set(done)
+        await asyncio.gather(*active_tasks)
+        await queue.put(None)
+        await writer_task
 
 
 async def main() -> None:
