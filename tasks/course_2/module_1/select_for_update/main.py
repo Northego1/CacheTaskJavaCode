@@ -23,6 +23,7 @@ async def fetch_task(
                             SELECT id
                             FROM tasks
                             WHERE status = :old_status
+                            FOR UPDATE SKIP LOCKED
                             LIMIT 1
                     )
                     RETURNING *
