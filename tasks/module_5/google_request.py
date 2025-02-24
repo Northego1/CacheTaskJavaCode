@@ -1,6 +1,5 @@
 import re
 import socket
-import json
 
 
 def headers_to_dict(headers: bytes) -> dict[str, str]:
