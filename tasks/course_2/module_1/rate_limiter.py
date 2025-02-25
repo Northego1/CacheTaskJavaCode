@@ -1,5 +1,6 @@
 import random
 import time
+import uuid
 from typing import Self
 
 import redis as r
@@ -17,7 +18,7 @@ class RateLimiter:
     def test(self) -> bool:
         now = time.time()
         self._redis.zremrangebyscore("api_rate_limit", "-inf", now - 3)
-        self._redis.zadd("api_rate_limit", {str(now): now})
+        self._redis.zadd("api_rate_limit", {uuid.uuid4(): now})
         return self._redis.zcard("api_rate_limit") < 5  # type: ignore
 
 
