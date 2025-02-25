@@ -22,7 +22,7 @@ async def fetch_task(
                     WHERE id = (
                             SELECT id
                             FROM tasks
-                            WHERE status = :old_status
+                            WHERE status = :old_status or (NOW() - updated_at) > INTERVAL '1 hour' 
                             FOR UPDATE SKIP LOCKED
                             LIMIT 1
                     )
