@@ -1,7 +1,9 @@
 import random
 import time
 from typing import Self
+
 import redis as r
+
 
 class RateLimitExceed(Exception):
     pass
